@@ -1,2 +1,12 @@
 ---
 # handlers file for search
+- name: reload systemd configuration
+  become: true
+  systemd:
+    daemon_reload: true
+
+# Restart service and ensure it is enabled
+- name: restart elasticsearch
+  become: true
+  service: name=elasticsearch state=restarted enabled=yes
+  register: es_restarted
