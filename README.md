@@ -8,6 +8,10 @@ Requirements
 
 Currently this role has no requirements.
 
+This role is exlusive for Debian based systems. if you want to use it on other systems, you can add the support for it. :)
+
+And only version 8.x is supported. version compatibility will be added in the future.
+
 Role Variables
 --------------
 
