@@ -1,0 +1,19 @@
+- name: "Add required apt pkg"
+  apt:
+    name: apt-transport-https
+    state: present
+  become: true
+
+- name: "apt repo"
+  apt_repository:
+    repo: deb https://artifacts.elastic.co/packages/8.x/apt stable main
+    filename: elastic-8.x.list
+    state: present
+  become: true
+
+- name: "Install elasticsearch"
+  apt:
+    name: elasticsearch
+    state: present
+    update_cache: yes
+  become: true
