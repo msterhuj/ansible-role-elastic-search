@@ -1,22 +1,30 @@
 ---
 # vars file for search
-cluster:
-  name: "es-ansible"
-node:
-  name: "{{ ansible_hostname }}"
-  attr: 
-    type: logging
-path:
-  data: /var/lib/elasticsearch
-  log: /var/log/elasticsearch
-bootstrap_memory_lock: false
-network_host: "{{ ansible_default_ipv4.address }}"
-http:
-  host: 0.0.0.0
-  port: 9200
+install:
+  # Upgrade elasticsearch if set to true
+  force_install_elasticsearch: false
+  # Reset elasticsearch 
+  force_reginstall_elasticsearch: false
 
-xpack:
-  security:
-    enabled: true
-    enrollment:
-      enabled: true
+# config for elasticsearch.yaml
+es_config:
+  cluster:
+    name: "es-ansible"
+  node:
+    name: "{{ ansible_hostname }}"
+    attr: 
+      type: logging
+  path:
+    data: /var/lib/elasticsearch
+    log: /var/log/elasticsearch
+  bootstrap_memory_lock: false
+  network_host: "{{ ansible_default_ipv4.address }}"
+  http:
+    host: 0.0.0.0
+    port: 9200
+
+  xpack:
+    security:
+      enabled: false
+      enrollment:
+        enabled: false
